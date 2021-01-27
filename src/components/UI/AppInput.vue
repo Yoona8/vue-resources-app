@@ -1,5 +1,5 @@
 <template>
-  <p>
+  <p class="input">
     <slot></slot>
   </p>
 </template>
@@ -11,5 +11,11 @@ export default {
 </script>
 
 <style>
+.input {
+  margin: 0;
+}
 
+.input input {
+  display: block;
+}
 </style>

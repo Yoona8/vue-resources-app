@@ -1,10 +1,10 @@
 <template>
   <the-header></the-header>
+  <tabs-navigation @tab-clicked="onTabClicked"></tabs-navigation>
   <main class="main">
-    <resource-list :resources="resources"></resource-list>
-    <new-resource
-      @resource-added="onResourceAdded"
-    ></new-resource>
+    <keep-alive>
+      <component :is="activeComponent"></component>
+    </keep-alive>
   </main>
 </template>
 
@@ -12,15 +12,17 @@
 import TheHeader from '@/components/TheHeader';
 import ResourceList from '@/components/ResourceList';
 import NewResource from '@/components/NewResource';
+import TabsNavigation from '@/components/TabsNavigation';
 
 const generateId = () => {
   return (Date.now() + Math.random()).toString();
 };
 
 export default {
-  components: {ResourceList, TheHeader, NewResource},
+  components: {TabsNavigation, ResourceList, TheHeader, NewResource},
   data() {
     return {
+      activeComponent: 'resource-list',
       resources: [{
         id: generateId(),
         name: 'Learn JS',
@@ -37,17 +39,24 @@ export default {
       }]
     }
   },
+  provide() {
+    return {
+      resources: this.resources,
+      onResourceAdded: this.onResourceAdded
+    }
+  },
   methods: {
-    onResourceAdded(resourceName) {
+    onResourceAdded(newResource) {
       const resource = {
         id: generateId(),
-        name: resourceName,
-        url: '',
-        tag: '',
+        ...newResource,
         isFinished: false
       };
 
       this.resources.push(resource);
+    },
+    onTabClicked(tab) {
+      this.activeComponent = tab;
     }
   }
 };
