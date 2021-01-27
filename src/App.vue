@@ -1,24 +1,14 @@
 <template>
-  <h1>Library</h1>
-  <ul>
-    <li
-      v-for="resource in resources"
-      :key="resource.id"
-    >
-      <resource-item
-        :id="resource.id"
-        :name="resource.name"
-        @complete-clicked="onCompleteClicked"
-      ></resource-item>
-    </li>
-  </ul>
+  <the-header></the-header>
+  <resource-list :resources="resources"></resource-list>
   <new-resource
     @resource-added="onResourceAdded"
   ></new-resource>
 </template>
 
 <script>
-import ResourceItem from '@/components/ResourceItem';
+import TheHeader from '@/components/TheHeader';
+import ResourceList from '@/components/ResourceList';
 import NewResource from '@/components/NewResource';
 
 const generateId = () => {
@@ -26,14 +16,14 @@ const generateId = () => {
 };
 
 export default {
-  components: {NewResource, ResourceItem},
+  components: {ResourceList, TheHeader, NewResource},
   data() {
     return {
-      title: 'Hello!',
       resources: [{
         id: generateId(),
         name: 'Learn JS',
         url: '',
+        description: 'Learn JS with the online textbook.',
         tag: 'javascript',
         isFinished: true
       }, {
@@ -43,14 +33,9 @@ export default {
         tag: 'css',
         isFinished: false
       }]
-    };
+    }
   },
   methods: {
-    onCompleteClicked(resourceId) {
-      const resource = this.resources.find((item) => item.id === resourceId);
-
-      resource.isFinished = !resource.isFinished;
-    },
     onResourceAdded(resourceName) {
       const resource = {
         id: generateId(),
@@ -66,4 +51,31 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+:root {
+  --c-primary: #DFBAC1;
+  --c-primary-dark: #B5A5BF;
+  --c-primary-neutral: #D8CCE0;
+  --c-neutral: #757DA4;
+  --c-black: #13161F;
+  --c-black-light: #33394F;
+  --basic-transition: 0.2s ease-in-out;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 375px;
+  font-family: 'Work Sans', Arial, sans-serif;
+  color: var(--c-black);
+}
+
+button,
+input {
+  font: inherit;
+}
+</style>
