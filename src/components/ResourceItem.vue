@@ -1,10 +1,10 @@
 <template>
   <article class="resource">
-    <app-title>
-      <app-link :url="url">
+    <h2 class="resource__title">
+      <a :href="url">
         {{ name }}
-      </app-link>
-    </app-title>
+      </a>
+    </h2>
     <p class="resource__description">{{ description }}</p>
     <app-button
       type="button"
@@ -15,12 +15,10 @@
 
 <script>
 import AppButton from '@/components/UI/AppButton';
-import AppLink from '@/components/UI/AppLink';
-import AppTitle from '@/components/UI/AppTitle';
 
 export default {
   name: 'resource-item',
-  components: {AppTitle, AppButton, AppLink},
+  components: {AppButton},
   props: {
     id: {
       type: String,
@@ -52,5 +50,11 @@ export default {
 .resource {
   max-width: 500px;
   margin: 0 auto;
+}
+
+.resource__title {
+  margin: 0 0 20px;
+  font-weight: 600;
+  font-size: 24px;
 }
 </style>

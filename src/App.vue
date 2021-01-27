@@ -1,9 +1,11 @@
 <template>
   <the-header></the-header>
-  <resource-list :resources="resources"></resource-list>
-  <new-resource
-    @resource-added="onResourceAdded"
-  ></new-resource>
+  <main class="main">
+    <resource-list :resources="resources"></resource-list>
+    <new-resource
+      @resource-added="onResourceAdded"
+    ></new-resource>
+  </main>
 </template>
 
 <script>
@@ -56,10 +58,11 @@ export default {
   --c-primary: #DFBAC1;
   --c-primary-dark: #B5A5BF;
   --c-primary-neutral: #D8CCE0;
-  --c-neutral: #757DA4;
+  --c-neutral: #757da4;
   --c-black: #13161F;
   --c-black-light: #33394F;
   --basic-transition: 0.2s ease-in-out;
+  --basic-box-shadow: 0 2px 6px 0 rgba(117, 125, 164, 0.3);
 }
 
 body,
@@ -77,5 +80,18 @@ body {
 button,
 input {
   font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  padding: 20px;
 }
 </style>

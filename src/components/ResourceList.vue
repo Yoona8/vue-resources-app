@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 .resources {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto 40px;
   padding: 0;
   list-style: none;
@@ -47,6 +47,7 @@ export default {
   padding: 20px 30px;
   border: 1px solid var(--c-neutral);
   border-radius: 10px;
+  box-shadow: var(--basic-box-shadow);
 }
 
 .resources__item:not(:last-child) {
