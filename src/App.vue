@@ -65,6 +65,7 @@ export default {
 <style>
 :root {
   --c-primary: #DFBAC1;
+  --c-primary-opaque: rgba(223, 186, 193, 0.5);
   --c-primary-dark: #B5A5BF;
   --c-primary-neutral: #D8CCE0;
   --c-neutral: #757da4;

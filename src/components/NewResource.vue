@@ -17,6 +17,7 @@
           <app-input>
             <label for="new-description">Description</label>
             <textarea
+                rows="4"
               id="new-description"
               name="new-description"
               v-model="description"
@@ -81,6 +82,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.new__fields {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 </style>

@@ -33,6 +33,13 @@ export default {
   background-color: var(--c-primary-neutral);
 }
 
+.button:not(:disabled):focus {
+  box-shadow:
+    0 0 0 3px #FFFFFF,
+    0 0 0 6px var(--c-black-light);
+  outline: none;
+}
+
 .button:disabled {
   background-color: var(--c-neutral);
   border-color: var(--c-neutral);
